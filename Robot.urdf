@@ -135,7 +135,7 @@
     <child link="wheel2"/>
     <axis xyz="0 -0.000004 -1"/>
     <limit effort="10" velocity="10"/>
-    <origin xyz="0.05 -0.06 0" rpy="-1.570793 0.954058 -3.141593"/>
+    <origin xyz="0.05 -0.06 0" rpy="-1.570793 0.954058 3.141593"/>
   </joint>
   <link name="wheel2">
     <visual>
