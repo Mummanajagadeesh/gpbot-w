@@ -1,1 +1,0 @@
-# webots-self-guide
