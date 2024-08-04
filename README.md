@@ -33,10 +33,10 @@
 │ S │  Move the link downward
 └───┘
 ┌───┐
-│ A │  Rotates the link holding camera in ACW 
+│ A │  Rotate the link holding camera in ACW 
 └───┘
 ┌───┐
-│ D │  Rotates the link holding camera in CW
+│ D │  Rotate the link holding camera in CW
 └───┘
       </pre>
     </td>
