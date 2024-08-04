@@ -1,0 +1,274 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "../protos/TexturedBackground.proto"
+EXTERNPROTO "../protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "../protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/rocks/protos/Rock.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.18478028940301824 0.013995871723725156 -0.9826801922410108 3.9519606702489782
+  position 1.3563665091102002 -1.501207425260114 0.9017480762905308
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 2 2
+}
+Robot {
+  translation -0.16383931543279195 -0.0006081326586651825 0.03972057905040909
+  rotation 0.00023326557207525826 0.05854029199138639 -0.9982850193210034 0.0002700720940811805
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -3.4237080817774506
+        axis 0 1 0
+        anchor 0.05 0.06 0
+      }
+      device [
+        DEF wheel1 RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 0.06 0
+        rotation -0.09990751758662259 -0.7035676412145337 0.7035702254682866 3.340746096725138
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0.870588 0.866667 0.854902
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics DEF wheel_physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -4.095650518772092
+        axis 0 1 0
+        anchor 0.05 -0.06 0
+      }
+      device [
+        DEF wheel2 RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 -0.06 0
+        rotation -0.34325705371324244 -0.6641428139726565 0.664145253483442 3.802900710995585
+        children [
+          USE wheel
+        ]
+        name "wheel2"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -4.095650539074345
+        axis 0 1 0
+        anchor -0.05 0.06 0
+      }
+      device [
+        DEF wheel3 RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 0.06 0
+        rotation -0.3432570612494133 -0.6641428120251653 0.6641452515359291 3.802900724479189
+        children [
+          USE wheel
+        ]
+        name "wheel3"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -4.095650569420188
+        axis 0 1 0
+        anchor -0.05 -0.06 0
+      }
+      device [
+        DEF wheel4 RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 -0.06 0
+        rotation -0.3432570725137577 -0.6641428091142306 0.6641452486249854 3.8029007446331615
+        children [
+          USE wheel
+        ]
+        name "wheel4"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+    DistanceSensor {
+      translation 0.1 0.02 0
+      rotation 0 0 1 0.3
+      children [
+        DEF sensor Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_left"
+      boundingObject USE sensor
+      physics Physics {
+      }
+    }
+    DEF ds_right DistanceSensor {
+      translation 0.1 -0.02 0
+      rotation 0 0 1 -0.3
+      children [
+        DEF sensor Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_right"
+      boundingObject USE sensor
+      physics Physics {
+      }
+    }
+    DEF body Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.2 0.1 0.05
+      }
+    }
+    GPS {
+      translation 0.01 0 0.03
+      children [
+        Shape {
+          geometry Cylinder {
+            height 0.02
+            radius 0.01
+          }
+        }
+      ]
+      name "global"
+    }
+    InertialUnit {
+      translation 0.07 0 0.03
+      children [
+        Shape {
+          geometry Box {
+            size 0.02 0.02 0.02
+          }
+        }
+      ]
+      name "imu"
+    }
+    DEF L1 Solid {
+      translation -0.05 0 0.12
+      children [
+        Shape {
+          geometry Box {
+            size 0.02 0.02 0.25
+          }
+        }
+      ]
+      name "solid(1)"
+    }
+    SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "linear"
+          maxPosition 0.2
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 -0.085 0.06
+        children [
+          DEF L2 Shape {
+            geometry Box {
+              size 0.02 0.15 0.02
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.075 1
+            }
+            device [
+              RotationalMotor {
+                name "RM"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.08 0
+              rotation 1 0 0 1.5708
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                  }
+                  geometry Cylinder {
+                    height 0.02
+                    radius 0.01
+                  }
+                }
+                Camera {
+                  translation 0 0 0.01
+                  rotation 0.577349935856137 0.5773509358560258 0.577349935856137 -2.094395307179586
+                  name "CAM"
+                }
+              ]
+            }
+          }
+        ]
+        name "L2"
+      }
+    }
+  ]
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "gpbot"
+}
+Rock {
+  translation 0.51 -0.39 0.04
+}
+Rock {
+  translation 0.4 0.13 0.04
+  name "rock(1)"
+}
+Rock {
+  translation -0.64 0.18 0.12
+  name "rock(2)"
+}
+Rock {
+  translation -0.27 -0.69 0.09
+  name "rock(3)"
+}
+WoodenBox {
+  translation 0 0.55 0.07
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.1 -0.56 0.07
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+}

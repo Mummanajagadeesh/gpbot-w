@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<robot name="/home/jagadeesh97/Documents/gp/Robot.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.1 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.1 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="linear" type="prismatic">
+    <parent link="base_link"/>
+    <child link="L2"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="-0.05 -0.085 0.06" rpy="0 0 0"/>
+    <limit effort="10" lower="0" upper="0.2" velocity="10"/>
+  </joint>
+  <link name="L2">
+  </link>
+  <joint name="RM" type="continuous">
+    <parent link="L2"/>
+    <child link="solid"/>
+    <axis xyz="0 1 -0.000004"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0 -0.075 1" rpy="1.5708 0 0"/>
+  </joint>
+  <link name="solid">
+  </link>
+  <link name="CAM">
+  </link>
+  <joint name="solid_CAM_joint" type="fixed">
+    <parent link="solid"/>
+    <child link="CAM"/>
+    <origin xyz="0 -1 0.015004" rpy="0.785399 -1.570795 0.785399"/>
+  </joint>
+  <link name="solid(1)">
+  </link>
+  <joint name="base_link_solid(1)_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid(1)"/>
+    <origin xyz="-0.05 0 0.12" rpy="0 0 0"/>
+  </joint>
+  <link name="imu">
+  </link>
+  <joint name="base_link_imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu"/>
+    <origin xyz="0.07 0 0.03" rpy="0 0 0"/>
+  </joint>
+  <link name="global">
+  </link>
+  <joint name="base_link_global_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="global"/>
+    <origin xyz="0.01 0 0.03" rpy="0 0 0"/>
+  </joint>
+  <link name="ds_right">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_ds_right_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds_right"/>
+    <origin xyz="0.1 -0.02 0" rpy="0 0 -0.3"/>
+  </joint>
+  <link name="ds_left">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_ds_left_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="ds_left"/>
+    <origin xyz="0.1 0.02 0" rpy="0 0 0.3"/>
+  </joint>
+  <joint name="wheel4" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel4"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.05 -0.06 0" rpy="-1.570793 0.954058 -3.141593"/>
+  </joint>
+  <link name="wheel4">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel3" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel3"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.05 0.06 0" rpy="-1.570793 0.954058 -3.141593"/>
+  </joint>
+  <link name="wheel3">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel2" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel2"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.05 -0.06 0" rpy="-1.570793 0.954058 -3.141593"/>
+  </joint>
+  <link name="wheel2">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel1" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid_0"/>
+    <axis xyz="0 -0.000004 -1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.05 0.06 0" rpy="-1.570793 0.282115 -3.141593"/>
+  </joint>
+  <link name="solid_0">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.04" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>
