@@ -1,0 +1,5 @@
+Makefile linguist-vendored
+*.make linguist-vendored
+*.cpp.o.d linguist-vendored
+*.cmake linguist-vendored
+*.md linguist-documentation
